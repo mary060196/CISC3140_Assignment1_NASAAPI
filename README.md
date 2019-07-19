@@ -11,7 +11,7 @@ This is the 1st assignment in the Brooklyn College Summer 2019 CISC 3140 class.
     webbrowser.open_new("http://localhost:5000/EPIC_API")
     app.run('localhost', 5000, True, use_reloader=False)
    ```
-  - The optional variable ```use_reloader ``` in the ```run``` function above was assigned with ```False``` so that the browser does not open two pages simultaneously.
+  - The optional variable ```use_reloader``` in the ```run``` function above was assigned with ```False``` so that the browser does not open two pages simultaneously.
   - The python file includes exception-catching code that checks if a valid API Key was entered. If not, the user is re-directed to the intro page, which displays a message: 'The API Key you entered is either wrong or the request rate for that key has surpassed. Please enter another API Key.' Feel free to test this option!
 
 **Thank you for Reading!**
