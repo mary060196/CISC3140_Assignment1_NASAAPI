@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NASA EPIC API - Miriam Briskman for CISC 3140</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='format.css') }}">
+        <script src="{{ url_for('static', filename = 'functs.js') }}"></script>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body onload = "displayYear()">
+
+<div>
+        <h1>The Blue Marble</h1>
+        <img id = "earthImage"
+                 src = {{ my_url }} 
+                 alt = "Earth (taken by DSCOVR Satellite)" 
+                 title = "Earth (taken by DSCOVR Satellite)">
+        <h2>Details:</h2>
+        <p><b>Description:</b> {{ deco['caption'] }}.</p>
+        <p><b>Version:</b> {{ deco['version'] }}.</p>
+        <p><b>Date of Capture:</b> {{ deco['date'] }}.</p>
+        <p><b>Image Name:</b> {{ deco['image'] }}.</p>
+        <p><b>Geographical Coordinates of the Location on Earth at the Center of the Image are:</b> 
+        <ul>
+          <li>Latitude: {{ deco['centroid_coordinates']['lat'] }}</li>
+          <li>Longitude: {{ deco['centroid_coordinates']['lon'] }}.</li>
+        </ul> </p>
+
+        <p><b>Coordinate-Triple Representing DSCOVR Satellite's Position in Space:</b>
+        <br>
+        ({{ deco['dscovr_j2000_position']['x'] }}, {{ deco['dscovr_j2000_position']['y'] }}, {{ deco['dscovr_j2000_position']['z'] }}).</p>
+
+        <p><b>Coordinate-Triple Representing Sun's Position in Space:</b>
+        <br>
+        ({{ deco['sun_j2000_position']['x'] }}, {{ deco['sun_j2000_position']['y'] }}, {{ deco['sun_j2000_position']['z'] }}).</p>
+
+        <p><b>Coordinate-Triple Representing Moon's Position in Space:</b>
+        <br>
+        ({{ deco['lunar_j2000_position']['x'] }}, {{ deco['lunar_j2000_position']['y'] }}, {{ deco['lunar_j2000_position']['z'] }}).</p>
+
+        <p><b>Coordinate 4-Tuple Representing DSCOVR Satellite Attitude (Rotational) Quaternions:</b>
+        <br>
+        ({{ deco['attitude_quaternions']['q0'] }}, {{ deco['attitude_quaternions']['q1'] }},{{ deco['attitude_quaternions']['q2'] }},{{ deco['attitude_quaternions']['q3'] }},).</p>
+</div>
+<br>
+<div>
+        <p>To go back, please press your browser's Back button or the button below:</p>
+        <a href="http://localhost:5000/EPIC_API" style="text-decoration:none"><button type="button" id="goback">Go Back</button></a>
+</div>
+
+<div id = "copyright">
+        <p id = 'copyrightParag'>Copyright © <span id = "year"></span></p>
+</div>
+
+</body>
+
+</html>

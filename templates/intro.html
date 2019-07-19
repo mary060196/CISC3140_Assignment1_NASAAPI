@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA EPIC API - Miriam Briskman for CISC 3140</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='format.css') }}">
+    <script src="{{ url_for('static', filename = 'functs.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body onload="focusOnTheTextbox(); displayYear();">
+
+<div>
+{% if error %}
+<p id = "errorMessage">
+The API Key you entered is either wrong or the request rate for that key has surpassed. Please enter another API Key.</p>
+{% endif %}
+
+    <h1>NASA EPIC API Endpoint Connection<h1>
+    <h2>What is EPIC?</h2>
+    <p><b>NASA (at <a href='https://epic.gsfc.nasa.gov/about/epic'>epic.gsfc.nasa.gov</a>) explains the EPIC project:</b> <br> EPIC (Earth Polychromatic Imaging Camera) is a 10-channel spectroradiometer (317 – 780 nm) onboard NOAA’s DSCOVR (Deep Space Climate Observatory) spacecraft. EPIC provides 10 narrow band spectral images of the entire sunlit face of Earth using a 2048x2048 pixel CCD (Charge Coupled Device) detector coupled to a 30-cm aperture Cassegrain telescope.
+
+The DSCOVR spacecraft is located at the Earth-Sun Lagrange-1 (L-1) point giving EPIC a unique angular perspective that will be used in science applications to measure ozone, aerosols, cloud reflectivity, cloud height, vegetation properties, and UV radiation estimates at Earth's surface. </p>
+    <h2>Connect to NASA API Endpoint</h2>
+    <p> Please enter your NASA API Key into the box below, and click <span id = 'submword'>Submit</span> to see information about an EPIC image made on June 27, 2019. You might try to use DEMO_KEY in place of the API Key, but note that it has a limited usage capacity (30 times per hour; 50 times per day). </p>
+    <form action = "http://localhost:5000/EPIC_API/results" method = "POST">
+        <span id='textinput'>API Key: </span>
+        <br>
+        {% if error %}
+        <span id = "errorMessage">
+        The API Key you entered is either wrong or the request rate for that key has surpassed. Please enter another API Key.</span>
+        <br>
+        <br>
+        {% endif %}
+        <input type="text" placeholder="Enter the API Key Here" name="API_KEY" id="API_KEY">
+        <br>
+        <button type="submit" id="subutton">Submit</button>
+    </form>
+</div>
+
+<div id = "copyright">
+   <p id = "copyrightParag" >Copyright © <span id = "year"></span></p>
+</div>
+
+</body>
+
+</html>
